@@ -205,6 +205,8 @@ namespace ProjetoDA_2020
         //nLimpar
         private void btn_Nova_Click(object sender, EventArgs e)
         {
+            casaDataGridView.CurrentCell = null;
+
             labelI_ID.Text = "";
             tb_Localidade.Text = "";
             tb_Rua.Text = "";
@@ -549,12 +551,14 @@ namespace ProjetoDA_2020
 
         private int checkTypeCasa()
         {
+
             int volta = -1;
             CasaArrendavel casaArrendavel;
             CasaVendavel casaVendavel;
-            Casa casa = (Casa)casaDataGridView.SelectedRows[0].DataBoundItem;
+            
             try
             {
+                Casa casa = (Casa)casaDataGridView.SelectedRows[0].DataBoundItem;
                 try
                 {
                     casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
@@ -585,7 +589,7 @@ namespace ProjetoDA_2020
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
             }
 
 
