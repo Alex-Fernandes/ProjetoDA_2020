@@ -1,0 +1,36 @@
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.exe.config
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.exe
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.pdb
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.dll
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.xml
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csprojAssemblyReference.cache
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.MenuPrincipal.resources
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.GerirClientes.resources
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.Properties.Resources.resources
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.GenerateResource.cache
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.CoreCompileInputs.cache
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.CopyComplete
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.exe
+C:\Users\Afonso Araújo\source\repos\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.pdb
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.exe.config
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.exe
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\ProjetoDA_2020.pdb
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.dll
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.xml
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csprojAssemblyReference.cache
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.MenuPrincipal.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.GerirCasas.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.GerirClientes.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.Properties.Resources.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.GenerateResource.cache
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.CoreCompileInputs.cache
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.csproj.CopyComplete
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.exe
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.pdb
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.FormArrendamentos.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.FormVenda.resources
+C:\Users\Alex\Desktop\ProjetoDA_2020\ProjetoDA_2020\obj\Debug\ProjetoDA_2020.GestaoLimpezas.resources

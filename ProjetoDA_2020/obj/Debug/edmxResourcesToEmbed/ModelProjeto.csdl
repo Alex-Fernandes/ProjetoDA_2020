@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ModelProjeto" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ModelProjetoContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clientes" EntityType="ModelProjeto.Cliente" />
+    <EntitySet Name="Arrendamentos" EntityType="ModelProjeto.Arrendamento" />
+    <EntitySet Name="Casas" EntityType="ModelProjeto.Casa" />
+    <EntitySet Name="Limpezas" EntityType="ModelProjeto.Limpeza" />
+    <EntitySet Name="Servicos" EntityType="ModelProjeto.Servico" />
+    <EntitySet Name="Vendas" EntityType="ModelProjeto.Venda" />
+    <AssociationSet Name="ClienteArrendamento" Association="ModelProjeto.ClienteArrendamento">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Arrendamento" EntitySet="Arrendamentos" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteCasa" Association="ModelProjeto.ClienteCasa">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Casa" EntitySet="Casas" />
+    </AssociationSet>
+    <AssociationSet Name="ClienteVenda" Association="ModelProjeto.ClienteVenda">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Venda" EntitySet="Vendas" />
+    </AssociationSet>
+    <AssociationSet Name="ArrendamentoCasaArrendavel" Association="ModelProjeto.ArrendamentoCasaArrendavel">
+      <End Role="Arrendamento" EntitySet="Arrendamentos" />
+      <End Role="CasaArrendavel" EntitySet="Casas" />
+    </AssociationSet>
+    <AssociationSet Name="VendaCasaVendavel" Association="ModelProjeto.VendaCasaVendavel">
+      <End Role="Venda" EntitySet="Vendas" />
+      <End Role="CasaVendavel" EntitySet="Casas" />
+    </AssociationSet>
+    <AssociationSet Name="CasaLimpeza" Association="ModelProjeto.CasaLimpeza">
+      <End Role="Casa" EntitySet="Casas" />
+      <End Role="Limpeza" EntitySet="Limpezas" />
+    </AssociationSet>
+    <AssociationSet Name="ServicoLimpeza" Association="ModelProjeto.ServicoLimpeza">
+      <End Role="Servico" EntitySet="Servicos" />
+      <End Role="Limpeza" EntitySet="Limpezas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nome" Type="String" Nullable="false" />
+    <Property Name="NIF" Type="String" Nullable="false" />
+    <Property Name="Morada" Type="String" Nullable="false" />
+    <Property Name="Contacto" Type="String" Nullable="false" />
+    <NavigationProperty Name="Arrendamentos" Relationship="ModelProjeto.ClienteArrendamento" FromRole="Cliente" ToRole="Arrendamento" />
+    <NavigationProperty Name="Casas" Relationship="ModelProjeto.ClienteCasa" FromRole="Cliente" ToRole="Casa" />
+    <NavigationProperty Name="Vendas" Relationship="ModelProjeto.ClienteVenda" FromRole="Cliente" ToRole="Venda" />
+  </EntityType>
+  <EntityType Name="Arrendamento">
+    <Key>
+      <PropertyRef Name="IdArrendamento" />
+    </Key>
+    <Property Name="IdArrendamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InicioContrato" Type="DateTime" Nullable="false" />
+    <Property Name="DuracaoMeses" Type="String" Nullable="false" />
+    <Property Name="Renovavel" Type="String" Nullable="false" />
+    <NavigationProperty Name="Arrendatario" Relationship="ModelProjeto.ClienteArrendamento" FromRole="Arrendamento" ToRole="Cliente" />
+    <NavigationProperty Name="CasaArrendavel" Relationship="ModelProjeto.ArrendamentoCasaArrendavel" FromRole="Arrendamento" ToRole="CasaArrendavel" />
+  </EntityType>
+  <EntityType Name="CasaArrendavel" BaseType="ModelProjeto.Casa">
+    <Property Name="ValorBaseMes" Type="Decimal" Nullable="false" />
+    <Property Name="Comissao" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Arrendamentos" Relationship="ModelProjeto.ArrendamentoCasaArrendavel" FromRole="CasaArrendavel" ToRole="Arrendamento" />
+  </EntityType>
+  <EntityType Name="Casa">
+    <Key>
+      <PropertyRef Name="IdCasa" />
+    </Key>
+    <Property Name="IdCasa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Localidade" Type="String" Nullable="false" />
+    <Property Name="Rua" Type="String" Nullable="false" />
+    <Property Name="Numero" Type="String" Nullable="false" />
+    <Property Name="Andar" Type="String" Nullable="false" />
+    <Property Name="Area" Type="Int32" Nullable="false" />
+    <Property Name="NumeroAssoalhada" Type="Int32" Nullable="false" />
+    <Property Name="NumeroWC" Type="Int32" Nullable="false" />
+    <Property Name="NumeroPisos" Type="Int32" Nullable="false" />
+    <Property Name="Tipo" Type="String" Nullable="false" />
+    <NavigationProperty Name="Proprietario" Relationship="ModelProjeto.ClienteCasa" FromRole="Casa" ToRole="Cliente" />
+    <NavigationProperty Name="Limpezas" Relationship="ModelProjeto.CasaLimpeza" FromRole="Casa" ToRole="Limpeza" />
+  </EntityType>
+  <EntityType Name="Limpeza">
+    <Key>
+      <PropertyRef Name="IdLimpeza" />
+    </Key>
+    <Property Name="IdLimpeza" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Data" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Casa" Relationship="ModelProjeto.CasaLimpeza" FromRole="Limpeza" ToRole="Casa" />
+    <NavigationProperty Name="Servicos" Relationship="ModelProjeto.ServicoLimpeza" FromRole="Limpeza" ToRole="Servico" />
+  </EntityType>
+  <EntityType Name="Servico">
+    <Key>
+      <PropertyRef Name="IdServico" />
+    </Key>
+    <Property Name="IdServico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descricao" Type="String" Nullable="false" />
+    <Property Name="Valor" Type="Decimal" Nullable="false" />
+    <Property Name="Unidades" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Limpeza" Relationship="ModelProjeto.ServicoLimpeza" FromRole="Servico" ToRole="Limpeza" />
+  </EntityType>
+  <EntityType Name="Venda">
+    <Key>
+      <PropertyRef Name="IdVenda" />
+    </Key>
+    <Property Name="IdVenda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DataVenda" Type="DateTime" Nullable="false" />
+    <Property Name="ValorNegociado" Type="Decimal" Nullable="false" />
+    <Property Name="ComissaoNegociada" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Comprador" Relationship="ModelProjeto.ClienteVenda" FromRole="Venda" ToRole="Cliente" />
+    <NavigationProperty Name="CasaVendavel" Relationship="ModelProjeto.VendaCasaVendavel" FromRole="Venda" ToRole="CasaVendavel" />
+  </EntityType>
+  <EntityType Name="CasaVendavel" BaseType="ModelProjeto.Casa">
+    <Property Name="ValorBaseVenda" Type="Decimal" Nullable="false" />
+    <Property Name="ValorComissao" Type="Decimal" Nullable="false" />
+    <NavigationProperty Name="Venda" Relationship="ModelProjeto.VendaCasaVendavel" FromRole="CasaVendavel" ToRole="Venda" />
+  </EntityType>
+  <Association Name="ClienteArrendamento">
+    <End Type="ModelProjeto.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="ModelProjeto.Arrendamento" Role="Arrendamento" Multiplicity="*" />
+  </Association>
+  <Association Name="ClienteCasa">
+    <End Type="ModelProjeto.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="ModelProjeto.Casa" Role="Casa" Multiplicity="*" />
+  </Association>
+  <Association Name="ClienteVenda">
+    <End Type="ModelProjeto.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="ModelProjeto.Venda" Role="Venda" Multiplicity="*" />
+  </Association>
+  <Association Name="ArrendamentoCasaArrendavel">
+    <End Type="ModelProjeto.Arrendamento" Role="Arrendamento" Multiplicity="*" />
+    <End Type="ModelProjeto.CasaArrendavel" Role="CasaArrendavel" Multiplicity="0..1" />
+  </Association>
+  <Association Name="VendaCasaVendavel">
+    <End Type="ModelProjeto.Venda" Role="Venda" Multiplicity="0..1" />
+    <End Type="ModelProjeto.CasaVendavel" Role="CasaVendavel" Multiplicity="1" />
+  </Association>
+  <Association Name="CasaLimpeza">
+    <End Type="ModelProjeto.Casa" Role="Casa" Multiplicity="0..1" />
+    <End Type="ModelProjeto.Limpeza" Role="Limpeza" Multiplicity="*" />
+  </Association>
+  <Association Name="ServicoLimpeza">
+    <End Type="ModelProjeto.Servico" Role="Servico" Multiplicity="*" />
+    <End Type="ModelProjeto.Limpeza" Role="Limpeza" Multiplicity="0..1" />
+  </Association>
+</Schema>
