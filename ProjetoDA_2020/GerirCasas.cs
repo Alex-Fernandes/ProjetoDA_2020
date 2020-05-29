@@ -13,8 +13,8 @@ namespace ProjetoDA_2020
     public partial class GerirCasas : Form
     {
         private ModelProjetoContainer container;
-
-
+        
+        //Id da casa quando abre de GerirClientes para GerirCasas
         public int GetID;
 
         public GerirCasas(ModelProjetoContainer container)
@@ -26,10 +26,9 @@ namespace ProjetoDA_2020
 
         private void GerirCasas_Load(object sender, EventArgs e)
         {
-           
+            //disable group boxes
             gb_Arrendavel.Enabled = false;
             gb_Venda.Enabled = false;
-            container = new ModelProjetoContainer();
 
             //carregar utilizadores para a combobox
             cb_Proprietario.DataSource = container.Clientes.ToList<Cliente>();
@@ -47,6 +46,7 @@ namespace ProjetoDA_2020
         public void ClienteToCasas(int idCasa)
         {
             LerCasas();
+
             //fazer com que ao abrir nao houvesse nada selecionado
             casaDataGridView.CurrentCell = null;
 
@@ -84,59 +84,66 @@ namespace ProjetoDA_2020
                 return;
             }
 
+            DialogResult dialog = MessageBox.Show("Tem a certeza que quer Apagar!", "Apagar Casa", MessageBoxButtons.YesNo);
+
             int resposta = 2;
 
+            //verificar qual é o tipo de casa se é Arrendavel ou Vendavel
             resposta = checkTypeCasa();
 
             CasaArrendavel casaArrendavel;
             CasaVendavel casaVendavel;
-            Casa casa = (Casa)casaDataGridView.SelectedRows[0].DataBoundItem;
-            
-            if(resposta == 1)
+
+            if (dialog == DialogResult.Yes)
             {
-                
-                casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                Cliente cliente = casaArrendavel.Proprietario;
-                Arrendamento arrendamento = new Arrendamento();
-                arrendamento.CasaArrendavel = casaArrendavel;
+                if (resposta == 1)
+                {
 
+                    casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                    Cliente cliente = casaArrendavel.Proprietario;
+                    Arrendamento arrendamento = new Arrendamento();
+                    arrendamento.CasaArrendavel = casaArrendavel;
 
-                //arrendamento.CasaArrendavel = null;
-                //perguntar ao stor
-                //container.SaveChanges();
-                //container.Arrendamentos.Remove(arrendamento);
-                //container.Arrendamentos.Remove(arrendamento);
-                //container.Arrendamentos.Remove(arrendamento);
-                casaArrendavel.Arrendamentos.Remove(arrendamento);
+                    //arrendamento.CasaArrendavel = null;
+                    //perguntar ao stor
+                    //container.SaveChanges();
+                    casaArrendavel.Arrendamentos.Remove(arrendamento);
 
-                arrendamento.Arrendatario = cliente;
-                cliente.Arrendamentos.Remove(arrendamento);
-                container.Casas.Remove(casaArrendavel);
-                
+                    arrendamento.Arrendatario = cliente;
+                    cliente.Arrendamentos.Remove(arrendamento);
+                    container.Casas.Remove(casaArrendavel);
+
+                }
+                if (resposta == 0)
+                {
+                    casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                    Venda venda = casaVendavel.Venda;
+                    container.Vendas.Remove(venda);
+                    container.Casas.Remove(casaVendavel);
+                }
+                if (resposta == -1)
+                {
+                    return;
+                }
             }
-            if(resposta == 0)
-            {
-                casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                Venda venda = casaVendavel.Venda;
-                container.Vendas.Remove(venda);
-                container.Casas.Remove(casaVendavel);
-            }
-            if(resposta == -1)
+            if(dialog == DialogResult.No)
             {
                 return;
             }
-            
             
             //container.Casas.Remove(casa);
             container.SaveChanges();
 
             LerCasas();
+
+            //para nao estar nada selecionado
             casaDataGridView.CurrentCell = null;
         }
 
         //guardar - alterar
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
+            //ir buscar a informação e guardar em variaveis
             string localidade = tb_Localidade.Text;
             string rua = tb_Rua.Text;
             string numero = tb_Numero.Text;
@@ -150,6 +157,7 @@ namespace ProjetoDA_2020
             string tipo = cb_Tipo.Text;
             string proprietario = cb_Proprietario.Text;
 
+            //verificacao 
             if (localidade.Length == 0)
             {
                 MessageBox.Show("Preencha a Localidade", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,6 +207,7 @@ namespace ProjetoDA_2020
                 MessageBox.Show("Selecione o Proprietario", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //Guardar a alterações à casa
             Casa casaSelecionada = (Casa)casaDataGridView.SelectedRows[0].DataBoundItem;
 
             casaSelecionada.Localidade = localidade;
@@ -214,7 +223,9 @@ namespace ProjetoDA_2020
 
             container.SaveChanges();
             LerCasas();
-            
+
+
+            MessageBox.Show("Alterações Realizadas!!!", "Confirmação");
         }
 
         //nLimpar
@@ -244,7 +255,10 @@ namespace ProjetoDA_2020
             Cliente cliente = casa.Proprietario;
             CasaArrendavel casaArrendavel;
             CasaVendavel casaVendavel;
-           
+            Limpeza limpeza = new Limpeza();
+            Servico servico = new Servico();
+            int resposta = 2;
+
             labelI_ID.Text = casa.IdCasa.ToString();
             tb_Localidade.Text = casa.Localidade.ToString();
             tb_Rua.Text = casa.Rua.ToString();
@@ -259,51 +273,45 @@ namespace ProjetoDA_2020
             cb_Tipo.Text = casa.Tipo.ToString();
             cb_Proprietario.Text = casa.Proprietario.ToString();
 
-            try
+            //verificar o tipo de casa
+            resposta = checkTypeCasa();
+
+            if(resposta == 0)
             {
-                try
-                {
-                    casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                    if (casa.IdCasa == casaArrendavel.IdCasa)
-                    {
-                        checkArrendavel.Checked = true;
-                        tb_ValorBase.Text = casaArrendavel.ValorBaseMes.ToString();
-                        tb_Comissao.Text = casaArrendavel.Comissao.ToString(); 
-                        //MessageBox.Show("Arrendavel");
-                    }
-                }
-                catch (Exception exx)
-                {
-                    //MessageBox.Show("Erro: CasaArrendavel " + exx.Message);
-                }
-                try
-                {
-                    casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                    if (casa.IdCasa == casaVendavel.IdCasa)
-                    {
-                        checkVendavel.Checked = true;
-                        tb_ValorNegociavel_Venda.Text = casaVendavel.ValorBaseVenda.ToString();
-                        tb_ComissaoBase_Venda.Text = casaVendavel.ValorBaseVenda.ToString();
-                        //MessageBox.Show("Vendavel");
-                    }
-                }
-                catch (Exception exxx)
-                {
-                    //MessageBox.Show("Erro CasaVendavel: " + exxx.Message);
-                }
+                //preenche os campos da casa vendavel
+                casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                limpeza.Casa = casaVendavel;
+                servico.Limpeza = limpeza;
 
+                btn_Gerir_Limpezas.Text = "Gerir Limpezas (Total: " + limpeza.Total.ToString() + ")";
+
+                checkVendavel.Checked = true;
+                tb_ValorNegociavel_Venda.Text = casaVendavel.ValorBaseVenda.ToString();
+                tb_ComissaoBase_Venda.Text = casaVendavel.ValorBaseVenda.ToString();
             }
-            catch (Exception ex)
+            if(resposta == 1)
             {
-                MessageBox.Show(ex.Message);
+                //preenche os campos da casa arrendavel
+                casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                limpeza.Casa = casaArrendavel;
+                servico.Limpeza = limpeza;
+
+                btn_Gerir_Limpezas.Text ="Gerir Limpezas (Total: " + limpeza.Total.ToString() + ")" ;
+
+                checkArrendavel.Checked = true;
+                tb_ValorBase.Text = casaArrendavel.ValorBaseMes.ToString();
+                tb_Comissao.Text = casaArrendavel.Comissao.ToString();
             }
-
-
+            if(resposta == 0)
+            {
+                return;
+            }
         }
 
         //Check boxes Casa Arrendavel
         private void checkArrendavel_CheckedChanged(object sender, EventArgs e)
         {
+            //para evitar que o checks estejam ambos selecionados 
             if(checkArrendavel.Checked == true)
             {
                 gb_Arrendavel.Enabled = true;
@@ -320,6 +328,7 @@ namespace ProjetoDA_2020
         //Criar Casa Arrendavel
         private void btn_VerCriar_Arrendamento_Click(object sender, EventArgs e)
         {
+            //ir buscar a informação e guardar em variaveis
             decimal valorBaseMes, comissao;
             string localidade = tb_Localidade.Text;
             string rua = tb_Rua.Text;
@@ -330,7 +339,6 @@ namespace ProjetoDA_2020
             int assoalhadas = Convert.ToInt32(Math.Round(numUp_Assoalhadas.Value, 0));
             int wc = Convert.ToInt32(Math.Round(numUp_WC.Value, 0));
             int pisos = Convert.ToInt32(Math.Round(numUp_Pisos.Value, 0));
-
             string tipo = cb_Tipo.Text;
 
             int resultado = 2;
@@ -339,6 +347,7 @@ namespace ProjetoDA_2020
             decimal.TryParse(tb_ValorBase.Text, out valorBaseMes);
             decimal.TryParse(tb_Comissao.Text, out comissao);
 
+            //verificaçoes
             if (localidade.Length == 0)
             {
                 MessageBox.Show("Preencha a Localidade", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -427,6 +436,8 @@ namespace ProjetoDA_2020
 
                 LerCasas();
 
+                MessageBox.Show("Casa Arrendavel Criada com Sucesso!!!", "Confirmação");
+
                 FormArrendamentos formArrendamentos = new FormArrendamentos(container, casaArrendavel);
                 formArrendamentos.Show();
             }
@@ -435,6 +446,7 @@ namespace ProjetoDA_2020
         //Check box CAsa Vendavel
         private void checkVendavel_CheckedChanged(object sender, EventArgs e)
         {
+            //para evitar que o checks estejam ambos selecionados 
             if (checkVendavel.Checked == true)
             {
                 gb_Arrendavel.Enabled = false;
@@ -451,6 +463,7 @@ namespace ProjetoDA_2020
         //Criar Casa Vendavel
         private void btn_Ver_Venda_Click(object sender, EventArgs e)
         {
+            //ir buscar a informação e guardar em variaveis
             decimal valorNegociavel, comissaoBase;
             string localidade = tb_Localidade.Text;
             string rua = tb_Rua.Text;
@@ -523,6 +536,7 @@ namespace ProjetoDA_2020
                 MessageBox.Show("Introduza a Comissão Base", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //verificar o tipo casa
             resultado = checkTypeCasa();
 
             if(resultado == 1)
@@ -557,6 +571,8 @@ namespace ProjetoDA_2020
                 container.SaveChanges();
 
                 LerCasas();
+
+                MessageBox.Show("Casa Vendavel Criada com Sucesso!!!", "Confirmação");
 
                 FormVenda formVenda = new FormVenda(casaVendavel, container, 0);
                 formVenda.Show();
@@ -635,7 +651,7 @@ namespace ProjetoDA_2020
 
 
         //nao tocar
-        //ao fechar abre uma janela GerirClientes
+        //ao fechar abre a janela GerirClientes
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

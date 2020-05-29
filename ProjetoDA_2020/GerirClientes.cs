@@ -24,7 +24,6 @@ namespace ProjetoDA_2020
 
         private void GerirClientes_Load(object sender, EventArgs e)
         {
-            container = new ModelProjetoContainer();
             LerDados();
         }
 
@@ -58,11 +57,13 @@ namespace ProjetoDA_2020
         //Novo Cliente
         private void Button2_Click(object sender, EventArgs e)
         {
+            //ir buscar a informação e guardar em variaveis
             string nome = nomeTextBox.Text;
             string nif = nIFTextBox.Text;
             string morada = moradaTextBox.Text;
             string contacto = contactoTextBox.Text;
 
+            //verificar
             if(nome.Length == 0)
             {
                 MessageBox.Show("Preencha o nome", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -102,6 +103,7 @@ namespace ProjetoDA_2020
             moradaTextBox.Text = " ";
             contactoTextBox.Text = " ";
 
+            MessageBox.Show("Cliente Introduzido com Sucesso!!!", "Confirmação");
         }
 
         
@@ -113,10 +115,19 @@ namespace ProjetoDA_2020
                 return;
             }
 
-            Cliente clienteSelecionado = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
-            container.Clientes.Remove(clienteSelecionado);
-            container.SaveChanges();
+            DialogResult dialog = MessageBox.Show("Tem a certeza que quer Apagar!", "Apagar Cliente", MessageBoxButtons.YesNo);
 
+            if(dialog == DialogResult.Yes)
+            {
+                Cliente clienteSelecionado = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
+                container.Clientes.Remove(clienteSelecionado);
+            }
+            if(dialog == DialogResult.No)
+            {
+                return;
+            }
+            container.SaveChanges();
+            
             LerDados();
         } 
 
@@ -175,6 +186,7 @@ namespace ProjetoDA_2020
             string morada = moradaTextBox.Text;
             string contacto = contactoTextBox.Text;
 
+            //verificar
             if (nome.Length == 0)
             {
                 MessageBox.Show("Preencha o nome", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -206,6 +218,8 @@ namespace ProjetoDA_2020
             container.SaveChanges();
 
             LerDados();
+
+            MessageBox.Show("Dados sobre o Cliente Atualizados com Sucesso!!!", "Confirmação");
 
             nomeTextBox.Text = " ";
             nIFTextBox.Text = " ";

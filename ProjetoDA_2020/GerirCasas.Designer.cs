@@ -79,7 +79,6 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.casaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.arrendamentosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             this.gb_Venda.SuspendLayout();
             this.gb_Arrendavel.SuspendLayout();
@@ -89,7 +88,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUp_Assoalhadas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrendamentosBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -336,6 +334,7 @@
             // 
             // cb_Proprietario
             // 
+            this.cb_Proprietario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Proprietario.FormattingEnabled = true;
             this.cb_Proprietario.Location = new System.Drawing.Point(109, 431);
             this.cb_Proprietario.Name = "cb_Proprietario";
@@ -353,6 +352,7 @@
             // 
             // cb_Tipo
             // 
+            this.cb_Tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Tipo.FormattingEnabled = true;
             this.cb_Tipo.Items.AddRange(new object[] {
             "Moradia Germinada",
@@ -577,10 +577,6 @@
             // 
             this.casaBindingSource.DataSource = typeof(ProjetoDA_2020.Casa);
             // 
-            // arrendamentosBindingSource
-            // 
-            this.arrendamentosBindingSource.DataSource = typeof(ProjetoDA_2020.Arrendamento);
-            // 
             // GerirCasas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -604,7 +600,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numUp_Assoalhadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casaBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.arrendamentosBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -661,6 +656,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.BindingSource arrendamentosBindingSource;
     }
 }

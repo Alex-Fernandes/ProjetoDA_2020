@@ -84,6 +84,7 @@
             this.btn_EmitirFaturas.TabIndex = 3;
             this.btn_EmitirFaturas.Text = "Emitir Faturas";
             this.btn_EmitirFaturas.UseVisualStyleBackColor = true;
+            this.btn_EmitirFaturas.Click += new System.EventHandler(this.btn_EmitirFaturas_Click);
             // 
             // dateTimePicker
             // 

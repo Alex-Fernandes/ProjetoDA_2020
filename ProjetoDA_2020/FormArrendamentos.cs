@@ -16,14 +16,17 @@ namespace ProjetoDA_2020
         private CasaArrendavel casaArrendavel;
         private Cliente cliente;
 
+        //receber o ModelProjetoContainer e a casaArrendavel
         public FormArrendamentos(ModelProjetoContainer container, CasaArrendavel casaArrendavel)
         {
             InitializeComponent();
             this.container = container;
             this.casaArrendavel = casaArrendavel;
 
+            //popular a combobox
             comboBox_Arrendatario.DataSource = container.Clientes.ToList<Cliente>();
 
+            //inserir nas labels
             label_ID.Text = casaArrendavel.IdCasa + "";
             label_Cliente_Nif.Text = casaArrendavel.Proprietario + "";
             label_Local_Rua_Num_Andar.Text = casaArrendavel.Localidade + " | " + casaArrendavel.Rua
@@ -45,6 +48,7 @@ namespace ProjetoDA_2020
             arrendamento.DuracaoMeses = numericUp_Duracao.Value.ToString();
             arrendamento.Arrendatario = cliente;
 
+            //check box
             if(checkBox_Renovavel.Checked == true)
             {
                 arrendamento.Renovavel = "Sim";
@@ -57,6 +61,9 @@ namespace ProjetoDA_2020
             casaArrendavel.Arrendamentos.Add(arrendamento);
 
             container.SaveChanges();
+
+            MessageBox.Show("Arrendamento Inserido com Sucesso!!!", "Confirmação");
+
             LerArrendamentos();
         }
 
@@ -64,14 +71,23 @@ namespace ProjetoDA_2020
         {
             Arrendamento arrendamento = (Arrendamento)listBox1.SelectedItem;
 
-            //arrendamento.Arrendatario = null;
-            arrendamento.CasaArrendavel = null;
+            DialogResult dialog = MessageBox.Show("Tem a certeza que quer Apagar!", "Apagar o Arrendamento", MessageBoxButtons.YesNo);
 
-            container.SaveChanges();
+            if(dialog == DialogResult.Yes)
+            {
+                //arrendamento.Arrendatario = null;
+                arrendamento.CasaArrendavel = null;
 
-            //cliente.Arrendamentos.Remove(arrendamento);
-            container.Arrendamentos.Remove(arrendamento);
+                container.SaveChanges();
 
+                //cliente.Arrendamentos.Remove(arrendamento);
+                container.Arrendamentos.Remove(arrendamento);
+            }
+            if(dialog == DialogResult.No)
+            {
+                return;
+            }
+           
             container.SaveChanges();
 
             LerArrendamentos();

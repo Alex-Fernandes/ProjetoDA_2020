@@ -17,11 +17,13 @@ namespace ProjetoDA_2020
         public MenuPrincipal()
         {
             InitializeComponent();
+            //inicio do ModelProjetoContainer
             container = new ModelProjetoContainer();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
+            //enviar o container
             GerirClientes gerirClientes = new GerirClientes(container);
 
             gerirClientes.Show();

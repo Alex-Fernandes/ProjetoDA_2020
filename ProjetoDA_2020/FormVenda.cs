@@ -20,9 +20,14 @@ namespace ProjetoDA_2020
         {
             InitializeComponent();
 
+            //receber o container
             this.container = container;
+            //receber a casaVendavel
             this.casaVendavel = casaVendavel;
 
+            //como é que deve abrir
+            //se for 0 é para criar uma nova venda
+            //se for 1 é para ver a venda já realizada
             EstadoAbrir(estado);
             
 
@@ -33,13 +38,14 @@ namespace ProjetoDA_2020
 
         private void EstadoAbrir(int estado)
         {
-
-            if(estado == 0)
+            //se for 0 é para criar uma nova venda
+            if (estado == 0)
             {
                 label_NomeNif.Text = casaVendavel.Proprietario + " ";
                 label_ValorBase.Text = casaVendavel.ValorBaseVenda + "";
                 label_ComissaoBase.Text = casaVendavel.ValorComissao + "";
             }
+            //se for 1 é para ver a venda já realizada
             if (estado == 1)
             {
                 Venda verVenda = casaVendavel.Venda;
@@ -63,6 +69,7 @@ namespace ProjetoDA_2020
 
         private void btn_Venda_Click(object sender, EventArgs e)
         {
+            //criar venda
             Venda venda = new Venda();
 
             venda.DataVenda = dateTimePicker.Value;
@@ -72,10 +79,13 @@ namespace ProjetoDA_2020
 
             cliente.Vendas.Add(venda);
             container.SaveChanges();
+
+            MessageBox.Show("Venda efectuada com Sucesso!!!", "Confirmação");
         }
 
         private void comboBox_Comprador_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //atualizar combobox
             cliente = null;
             cliente = (Cliente)comboBox_Comprador.SelectedItem;
         }
