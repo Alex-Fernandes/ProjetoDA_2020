@@ -286,13 +286,32 @@ namespace ProjetoDA_2020
             formVenda.Show();
         }
 
+        //Para abrir os arrendamentos
         private void lbArrendamentos_DoubleClick_1(object sender, EventArgs e)
         {
             Cliente clienteSelecionado = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
             Arrendamento arrendamento = (Arrendamento)lbArrendamentos.SelectedItem;
             CasaArrendavel casaArrendavel = arrendamento.CasaArrendavel;
-            FormArrendamentos formArrendamentos = new FormArrendamentos(container, casaArrendavel);
-            formArrendamentos.Show();
+            if(casaArrendavel != null)
+            {
+                FormArrendamentos formArrendamentos = new FormArrendamentos(container, casaArrendavel);
+                formArrendamentos.Show();
+            }
+            else
+            {
+                MessageBox.Show("Arrendamento Vasio, a definitivamente Apagar", "Aviso");
+
+                //arrendamento.Arrendatario = null;
+                arrendamento.CasaArrendavel = null;
+
+                container.SaveChanges();
+
+                //cliente.Arrendamentos.Remove(arrendamento);
+                container.Arrendamentos.Remove(arrendamento);
+
+                AtualizarArrendamentos();
+            }
+            
         }
     }
 }

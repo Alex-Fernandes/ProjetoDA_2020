@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Manual: como funciona o programa(explicar como criar/apagar/modificar)
+/// Relatorio: explicar o que cada form faz, como foi implementado as coisas e se houver algum bug
+/// </summary>
+
 namespace ProjetoDA_2020
 {
     public partial class GerirCasas : Form
@@ -116,6 +121,7 @@ namespace ProjetoDA_2020
                 }
                 if (resposta == 0)
                 {
+                    //Funciona apagar venda
                     casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
                     Venda venda = casaVendavel.Venda;
                     container.Vendas.Remove(venda);
