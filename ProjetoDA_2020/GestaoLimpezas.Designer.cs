@@ -74,6 +74,7 @@
             this.lb_Datas.Name = "lb_Datas";
             this.lb_Datas.Size = new System.Drawing.Size(319, 472);
             this.lb_Datas.TabIndex = 2;
+            this.lb_Datas.SelectedIndexChanged += new System.EventHandler(this.lb_Datas_SelectedIndexChanged);
             // 
             // btn_EmitirFaturas
             // 
@@ -99,6 +100,7 @@
             this.btn_Criar.TabIndex = 5;
             this.btn_Criar.Text = "Criar";
             this.btn_Criar.UseVisualStyleBackColor = true;
+            this.btn_Criar.Click += new System.EventHandler(this.btn_Criar_Click);
             // 
             // groupBox1
             // 
@@ -129,7 +131,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(155, 99);
+            this.label7.Location = new System.Drawing.Point(139, 99);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 14;
@@ -161,6 +163,7 @@
             this.btn_Inserir.TabIndex = 8;
             this.btn_Inserir.Text = "Inserir";
             this.btn_Inserir.UseVisualStyleBackColor = true;
+            this.btn_Inserir.Click += new System.EventHandler(this.btn_Inserir_Click);
             // 
             // numericUp_Quantidade
             // 
@@ -181,6 +184,8 @@
             // comboBox_Servicos
             // 
             this.comboBox_Servicos.FormattingEnabled = true;
+            this.comboBox_Servicos.Items.AddRange(new object[] {
+            "Area até 20m2"});
             this.comboBox_Servicos.Location = new System.Drawing.Point(76, 37);
             this.comboBox_Servicos.Name = "comboBox_Servicos";
             this.comboBox_Servicos.Size = new System.Drawing.Size(236, 21);

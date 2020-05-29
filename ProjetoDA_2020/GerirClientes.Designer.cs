@@ -211,6 +211,7 @@
             this.lbAquisicoes.Name = "lbAquisicoes";
             this.lbAquisicoes.Size = new System.Drawing.Size(302, 108);
             this.lbAquisicoes.TabIndex = 15;
+            this.lbAquisicoes.DoubleClick += new System.EventHandler(this.lbAquisicoes_DoubleClick);
             // 
             // label7
             // 
@@ -228,6 +229,7 @@
             this.lbArrendamentos.Name = "lbArrendamentos";
             this.lbArrendamentos.Size = new System.Drawing.Size(302, 108);
             this.lbArrendamentos.TabIndex = 13;
+            this.lbArrendamentos.DoubleClick += new System.EventHandler(this.lbArrendamentos_DoubleClick_1);
             // 
             // label6
             // 

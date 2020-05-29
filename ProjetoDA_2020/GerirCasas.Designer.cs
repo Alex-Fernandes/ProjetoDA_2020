@@ -158,6 +158,7 @@
             this.btn_Gerir_Limpezas.TabIndex = 6;
             this.btn_Gerir_Limpezas.Text = "Gerir Limpezas (Total: 0)";
             this.btn_Gerir_Limpezas.UseVisualStyleBackColor = true;
+            this.btn_Gerir_Limpezas.Click += new System.EventHandler(this.btn_Gerir_Limpezas_Click);
             // 
             // gb_Venda
             // 

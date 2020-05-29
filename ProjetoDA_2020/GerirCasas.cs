@@ -48,8 +48,8 @@ namespace ProjetoDA_2020
         {
             LerCasas();
             //fazer com que ao abrir nao houvesse nada selecionado
-            casaDataGridView.Rows[0].Selected = false;
-            
+            casaDataGridView.CurrentCell = null;
+
             this.GetID = idCasa;
             
             //-1 pq nao existe nenhuma posicao -1 na datagrid
@@ -96,15 +96,29 @@ namespace ProjetoDA_2020
             {
                 
                 casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                casaArrendavel.Arrendamentos = null;
-                casaArrendavel.Proprietario = null;
+                Cliente cliente = casaArrendavel.Proprietario;
+                Arrendamento arrendamento = new Arrendamento();
+                arrendamento.CasaArrendavel = casaArrendavel;
+
+
+                //arrendamento.CasaArrendavel = null;
+                //perguntar ao stor
+                //container.SaveChanges();
+                //container.Arrendamentos.Remove(arrendamento);
+                //container.Arrendamentos.Remove(arrendamento);
+                //container.Arrendamentos.Remove(arrendamento);
+                casaArrendavel.Arrendamentos.Remove(arrendamento);
+
+                arrendamento.Arrendatario = cliente;
+                cliente.Arrendamentos.Remove(arrendamento);
                 container.Casas.Remove(casaArrendavel);
+                
             }
             if(resposta == 0)
             {
                 casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
-                casaVendavel.Venda = null;
-                casaVendavel.Proprietario = null;
+                Venda venda = casaVendavel.Venda;
+                container.Vendas.Remove(venda);
                 container.Casas.Remove(casaVendavel);
             }
             if(resposta == -1)
@@ -117,6 +131,7 @@ namespace ProjetoDA_2020
             container.SaveChanges();
 
             LerCasas();
+            casaDataGridView.CurrentCell = null;
         }
 
         //guardar - alterar
@@ -549,6 +564,28 @@ namespace ProjetoDA_2020
 
         }
 
+        //Limpeza
+        private void btn_Gerir_Limpezas_Click(object sender, EventArgs e)
+        {
+            int resultado = 2;
+
+            resultado = checkTypeCasa();
+
+            if(resultado == 1)
+            {
+                CasaArrendavel casaArrendavel = (CasaArrendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                GestaoLimpezas gestaoLimpezas = new GestaoLimpezas(container, casaArrendavel);
+                gestaoLimpezas.Show();
+            }
+            if(resultado == 0)
+            {
+                CasaVendavel casaVendavel = (CasaVendavel)casaDataGridView.SelectedRows[0].DataBoundItem;
+                GestaoLimpezas gestaoLimpezas = new GestaoLimpezas(container, casaVendavel);
+                gestaoLimpezas.Show();
+            }
+        }
+
+        //verifica o tipo: se é vendavel ou arrendavel
         private int checkTypeCasa()
         {
 
@@ -606,5 +643,6 @@ namespace ProjetoDA_2020
             GerirClientes gs = new GerirClientes(container);
             gs.Show();
         }
+
     }
 }

@@ -70,6 +70,8 @@
     <Compile Include="Classes\Arrendar_.cs" />
     <Compile Include="Classes\Casa_.cs" />
     <Compile Include="Classes\Cliente_.cs" />
+    <Compile Include="Classes\Limpeza_.cs" />
+    <Compile Include="Classes\Servico_.cs" />
     <Compile Include="Classes\Venda_.cs" />
     <Compile Include="Cliente.cs">
       <DependentUpon>ModelProjeto.tt</DependentUpon>

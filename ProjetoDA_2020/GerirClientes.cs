@@ -38,6 +38,7 @@ namespace ProjetoDA_2020
             Cliente cliente = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
             lbArrendamentos.DataSource = null;
             lbArrendamentos.DataSource = cliente.Arrendamentos.ToList<Arrendamento>();
+            
         }
 
         public void AtualizarAquisicoes()
@@ -235,7 +236,7 @@ namespace ProjetoDA_2020
 
             AtualizarCasas();
             AtualizarAquisicoes();
-            //AtualizarArrendamentos();
+            AtualizarArrendamentos();
 
             //util para descobrir a posicao expecifica na datagrid
             /*
@@ -261,6 +262,23 @@ namespace ProjetoDA_2020
             
         }
 
+        //click para abrir as vendas
+        private void lbAquisicoes_DoubleClick(object sender, EventArgs e)
+        {
+            Cliente clienteSelecionado = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
+            Venda venda = (Venda)lbAquisicoes.SelectedItem;
+            CasaVendavel casaVendavel = venda.CasaVendavel;
+            FormVenda formVenda = new FormVenda(casaVendavel, container, 1);
+            formVenda.Show();
+        }
 
+        private void lbArrendamentos_DoubleClick_1(object sender, EventArgs e)
+        {
+            Cliente clienteSelecionado = (Cliente)clienteDataGridView.SelectedRows[0].DataBoundItem;
+            Arrendamento arrendamento = (Arrendamento)lbArrendamentos.SelectedItem;
+            CasaArrendavel casaArrendavel = arrendamento.CasaArrendavel;
+            FormArrendamentos formArrendamentos = new FormArrendamentos(container, casaArrendavel);
+            formArrendamentos.Show();
+        }
     }
 }
