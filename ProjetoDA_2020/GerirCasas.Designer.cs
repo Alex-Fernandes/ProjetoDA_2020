@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GerirCasas));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Nova = new System.Windows.Forms.Button();
             this.btn_Guardar = new System.Windows.Forms.Button();
@@ -585,6 +586,7 @@
             this.Controls.Add(this.casaDataGridView);
             this.Controls.Add(this.btn_Apagar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GerirCasas";
             this.Text = "GerirCasas";
             this.Load += new System.EventHandler(this.GerirCasas_Load);

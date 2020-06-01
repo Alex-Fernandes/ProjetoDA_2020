@@ -252,6 +252,15 @@ namespace ProjetoDA_2020
 
             cb_Tipo.Text = "";
             cb_Proprietario.Text = "";
+
+            tb_ComissaoBase_Venda.Text = "";
+            tb_ValorNegociavel_Venda.Text = "";
+
+            tb_ValorBase.Text = "";
+            tb_Comissao.Text = "";
+
+            checkArrendavel.Enabled = false;
+            checkVendavel.Enabled = false;
         }
 
         //ao clicar preenche os campos

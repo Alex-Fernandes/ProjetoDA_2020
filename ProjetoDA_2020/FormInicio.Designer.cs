@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.btnCasas = new System.Windows.Forms.Button();
             this.btnClientes = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -86,6 +87,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCasas);
             this.Controls.Add(this.btnClientes);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuPrincipal";
             this.Text = "ImoDA";
             this.ResumeLayout(false);

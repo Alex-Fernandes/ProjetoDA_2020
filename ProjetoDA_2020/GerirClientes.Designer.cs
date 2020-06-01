@@ -33,6 +33,7 @@
             System.Windows.Forms.Label moradaLabel;
             System.Windows.Forms.Label nIFLabel;
             System.Windows.Forms.Label nomeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GerirClientes));
             this.tb_Filtrar = new System.Windows.Forms.TextBox();
             this.cb_Filtro = new System.Windows.Forms.ComboBox();
             this.btn_Filtrar = new System.Windows.Forms.Button();
@@ -111,6 +112,7 @@
             // 
             // cb_Filtro
             // 
+            this.cb_Filtro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Filtro.FormattingEnabled = true;
             this.cb_Filtro.Items.AddRange(new object[] {
             "Nome",
@@ -350,6 +352,7 @@
             this.Controls.Add(this.btn_Filtrar);
             this.Controls.Add(this.cb_Filtro);
             this.Controls.Add(this.tb_Filtrar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GerirClientes";
             this.Text = "GerirClientes";
             this.Load += new System.EventHandler(this.GerirClientes_Load);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GestaoLimpezas));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lb_Datas = new System.Windows.Forms.ListBox();
@@ -44,7 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox_Servicos = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUp_Quantidade)).BeginInit();
             this.SuspendLayout();
@@ -105,6 +106,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.lb_Detalhes);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label_ValorUnitario);
@@ -114,9 +116,9 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.comboBox_Servicos);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(334, 50);
+            this.groupBox1.Location = new System.Drawing.Point(334, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(616, 571);
+            this.groupBox1.Size = new System.Drawing.Size(530, 615);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Detalhes Limpeza";
@@ -124,15 +126,15 @@
             // lb_Detalhes
             // 
             this.lb_Detalhes.FormattingEnabled = true;
-            this.lb_Detalhes.Location = new System.Drawing.Point(6, 123);
+            this.lb_Detalhes.Location = new System.Drawing.Point(6, 163);
             this.lb_Detalhes.Name = "lb_Detalhes";
-            this.lb_Detalhes.Size = new System.Drawing.Size(609, 446);
+            this.lb_Detalhes.Size = new System.Drawing.Size(502, 446);
             this.lb_Detalhes.TabIndex = 8;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(139, 99);
+            this.label7.Location = new System.Drawing.Point(139, 130);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(13, 13);
             this.label7.TabIndex = 14;
@@ -141,7 +143,7 @@
             // label_ValorUnitario
             // 
             this.label_ValorUnitario.AutoSize = true;
-            this.label_ValorUnitario.Location = new System.Drawing.Point(103, 99);
+            this.label_ValorUnitario.Location = new System.Drawing.Point(103, 130);
             this.label_ValorUnitario.Name = "label_ValorUnitario";
             this.label_ValorUnitario.Size = new System.Drawing.Size(30, 13);
             this.label_ValorUnitario.TabIndex = 13;
@@ -150,7 +152,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 99);
+            this.label5.Location = new System.Drawing.Point(24, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 12;
@@ -158,7 +160,7 @@
             // 
             // btn_Inserir
             // 
-            this.btn_Inserir.Location = new System.Drawing.Point(507, 35);
+            this.btn_Inserir.Location = new System.Drawing.Point(206, 80);
             this.btn_Inserir.Name = "btn_Inserir";
             this.btn_Inserir.Size = new System.Drawing.Size(96, 23);
             this.btn_Inserir.TabIndex = 8;
@@ -168,7 +170,7 @@
             // 
             // numericUp_Quantidade
             // 
-            this.numericUp_Quantidade.Location = new System.Drawing.Point(405, 37);
+            this.numericUp_Quantidade.Location = new System.Drawing.Point(94, 82);
             this.numericUp_Quantidade.Name = "numericUp_Quantidade";
             this.numericUp_Quantidade.Size = new System.Drawing.Size(76, 20);
             this.numericUp_Quantidade.TabIndex = 11;
@@ -176,7 +178,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(334, 40);
+            this.label4.Location = new System.Drawing.Point(23, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 13);
             this.label4.TabIndex = 10;
@@ -184,9 +186,19 @@
             // 
             // comboBox_Servicos
             // 
+            this.comboBox_Servicos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Servicos.FormattingEnabled = true;
             this.comboBox_Servicos.Items.AddRange(new object[] {
-            "Area até 20m2"});
+            "Àrea até 10m2 1h",
+            "Àrea até 20m2 1h",
+            "Àrea até 30m2 1h",
+            "Àrea até 40m2 1h",
+            "Àrea até 50m2 1h",
+            "Àrea até 60m2 1h",
+            "Àrea até 70m2 1h",
+            "Àrea até 80m2 1h",
+            "Àrea até 90m2 1h",
+            "Àrea até 100m2 1h"});
             this.comboBox_Servicos.Location = new System.Drawing.Point(76, 37);
             this.comboBox_Servicos.Name = "comboBox_Servicos";
             this.comboBox_Servicos.Size = new System.Drawing.Size(236, 21);
@@ -201,21 +213,22 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Serviço:";
             // 
-            // label6
+            // button1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(828, 21);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(122, 13);
-            this.label6.TabIndex = 20;
-            this.label6.Text = "Decoracao Por escolher";
+            this.button1.BackgroundImage = global::ProjetoDA_2020.Properties.Resources.clean;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(373, 15);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(135, 120);
+            this.button1.TabIndex = 16;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // GestaoLimpezas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 637);
-            this.Controls.Add(this.label6);
+            this.ClientSize = new System.Drawing.Size(881, 637);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Criar);
             this.Controls.Add(this.dateTimePicker);
@@ -223,6 +236,7 @@
             this.Controls.Add(this.lb_Datas);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GestaoLimpezas";
             this.Text = "Limpezas";
             this.groupBox1.ResumeLayout(false);
@@ -251,6 +265,6 @@
         private System.Windows.Forms.Label label_ValorUnitario;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ListBox lb_Detalhes;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }

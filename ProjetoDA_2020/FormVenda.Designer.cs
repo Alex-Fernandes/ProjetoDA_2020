@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormVenda));
             this.label3 = new System.Windows.Forms.Label();
             this.label_NomeNif = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,7 +46,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.comboBox_Comprador = new System.Windows.Forms.ComboBox();
             this.btn_Venda = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label3
@@ -196,21 +197,23 @@
             this.btn_Venda.UseVisualStyleBackColor = true;
             this.btn_Venda.Click += new System.EventHandler(this.btn_Venda_Click);
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(218, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Decoracao Por escolher";
+            this.button1.BackgroundImage = global::ProjetoDA_2020.Properties.Resources.sell;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(234, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 82);
+            this.button1.TabIndex = 20;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // FormVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(343, 321);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Venda);
             this.Controls.Add(this.comboBox_Comprador);
             this.Controls.Add(this.label14);
@@ -228,6 +231,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label_NomeNif);
             this.Controls.Add(this.label3);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormVenda";
             this.Text = "Venda de Casa";
             this.ResumeLayout(false);
@@ -253,6 +257,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox comboBox_Comprador;
         private System.Windows.Forms.Button btn_Venda;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
     }
 }

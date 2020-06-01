@@ -191,6 +191,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\building.png" />
+    <None Include="Images\rent.png" />
+    <None Include="Images\sell.png" />
+    <None Include="Images\clean.png" />
     <Content Include="Images\user.png" />
     <Content Include="ModelProjeto.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
